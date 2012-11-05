@@ -1,9 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 
-# tmp
-require 'pp'
-
 require 'nokogiri'
 
 # minitest and turn
@@ -18,11 +15,6 @@ require "i18n"
 
 $:.unshift File.expand_path('../../lib', __FILE__)
 require 'calendrier'
-
-
-#require File.expand_path('../../lib/calendrier.rb', __FILE__)
-
-#ActionController::Base.view_paths = File.join(File.dirname(__FILE__), 'views')
 
 Calendrier::Routes = ActionDispatch::Routing::RouteSet.new
 Calendrier::Routes.draw do
