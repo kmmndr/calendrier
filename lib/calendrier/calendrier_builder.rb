@@ -25,6 +25,8 @@ module Calendrier
       def render(header, content)
         display = @options[:display]
         title = @options[:title] || ''
+        cell_date_format = @options[:cell_date_format] || (display == :month ? '%A' : :default)
+        time_slot_title = @options[:time_slot_title] || ''
 
         @context.content_tag(:div, nil, :class => "calendar #{display.to_s}") do
           cal = @context.content_tag(:span, title)
@@ -33,10 +35,9 @@ module Calendrier
             unless header.nil?
               thead = @context.content_tag(:thead, nil) do
                 ths = "".html_safe
-                ths << @context.content_tag(:th, 'Horaires') if display == :week
+                ths << @context.content_tag(:th, time_slot_title) if display == :week
                 header.each do |cell_date|
-                  ths << @context.content_tag(:th, I18n.l(cell_date)) if display == :week
-                  ths << @context.content_tag(:th, I18n.l(cell_date, :format => '%A')) if display == :month
+                  ths << @context.content_tag(:th, I18n.l(cell_date, :format => cell_date_format))
                 end
                 ths
               end
@@ -48,7 +49,7 @@ module Calendrier
                 content.each_with_index do |row, index|
                   trs << @context.content_tag(:tr, nil) do 
                     tds = "".html_safe
-                    tds << @context.content_tag(:td, index) if display == :week
+                    tds << @context.content_tag(:td, "#{index}h") if display == :week
                     row.collect do |cell|
                       cell_content = "".html_safe
                       cell_time = cell[:time]
