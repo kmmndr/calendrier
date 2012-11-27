@@ -34,12 +34,14 @@ module Calendrier
 
             unless header.nil?
               thead = @context.content_tag(:thead, nil) do
-                ths = "".html_safe
-                ths << @context.content_tag(:th, time_slot_title) if display == :week
-                header.each do |cell_date|
-                  ths << @context.content_tag(:th, I18n.l(cell_date, :format => cell_date_format))
+                @context.content_tag(:tr, nil) do
+                  ths = "".html_safe
+                  ths << @context.content_tag(:th, time_slot_title) if display == :week
+                  header.each do |cell_date|
+                    ths << @context.content_tag(:th, I18n.l(cell_date, :format => cell_date_format))
+                  end
+                  ths
                 end
-                ths
               end
             end
 
