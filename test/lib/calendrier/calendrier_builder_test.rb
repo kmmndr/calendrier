@@ -19,7 +19,7 @@ describe Calendrier::CalendrierBuilder do
     # preparing array for the week of the 25th of may 2012
     @days_of_may_weekly = []
     24.times do |hour_idx|
-      @days_of_may_weekly << (hour_idx).to_s
+      @days_of_may_weekly << "#{(hour_idx).to_s}h"
       7.times do |day_idx|
         @days_of_may_weekly << ''
       end
@@ -81,7 +81,7 @@ describe Calendrier::CalendrierBuilder do
     html_doc = Nokogiri::HTML(cal.html_safe)
     calendar_lines = html_doc.css('div.calendar tr')
     calendar_lines_count = html_doc.css('div.calendar tr').count
-    calendar_lines_count.must_equal 5
+    calendar_lines_count.must_equal 6
   end
 
   it "should have the right amount of columns for monthly calendar" do
@@ -109,7 +109,7 @@ describe Calendrier::CalendrierBuilder do
     cal = generate_calendar(:week)
     html_doc = Nokogiri::HTML(cal.html_safe)
     calendar_lines_count = html_doc.css('div.calendar tr').count
-    calendar_lines_count.must_equal 24
+    calendar_lines_count.must_equal 25
   end
 
   it "should have the right amount of columns for monthly calendar" do
