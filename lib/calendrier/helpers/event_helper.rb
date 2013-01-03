@@ -11,6 +11,12 @@ module Calendrier
       sorted_events_do(events_by_date, cell_begin_time, cell_end_time) { |event| yield event }
     end
 
+    def get_cell_sorted_events(events_by_date, cell_begin_time, cell_end_time)
+      events = []
+      sorted_events_do(events_by_date, cell_begin_time, cell_end_time) { |event| events << event }
+      events
+    end
+
     protected
 
     def sorted_events_do(events_by_date, cell_begin_time, cell_end_time, &block)
