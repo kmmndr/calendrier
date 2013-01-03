@@ -6,7 +6,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["thomas.kienlen@lafourmi-immo.com"]
   gem.description   = %q{simple calendar}
   gem.summary       = %q{simple calendar gem, including helpers to display objects inside cells}
-  gem.homepage      = ""
+  gem.homepage      = "https://github.com/lafourmi/calendrier"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
