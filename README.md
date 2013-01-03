@@ -2,11 +2,11 @@
 
 [![travis](https://secure.travis-ci.org/lafourmi/calendrier.png?branch=master)](http://travis-ci.org/lafourmi/calendrier)
 
-##DESCRIPTION
+## Description
 
 A simple helper for creating calendars. It includes a method to sort objects by date and an helpers to display events/meetings and other objects.
 
-##SYNOPSIS:
+## Synopsis
 
 The gem provides `calendrier` helper to display calendars
 
@@ -69,7 +69,7 @@ In your view :
     
 
 
-##Custom builder
+## Custom builder
 
 If you need a more complex calendar, you'll need to define a custom builder. To create such builder, add a file like the following. 
 
@@ -128,7 +128,7 @@ Use your new builder by adding the builder option to the renderer.
     <%= calendrier(:year => 2012, :month => 5, :day => 25, :start_on_monday => true, :display => :month, :builder => Calendrier::CalendrierBuilder::CustomBuilder) %>
 
 
-##INSTALLATION
+## Installation
 
 Add this line to your application's Gemfile :
 
@@ -143,16 +143,7 @@ Or install it yourself as :
     $ gem install calendrier
 
 
-##AUTHORS
+## License
 
-Romain Castel
+*Calendrier* is Copyright (c) 2013 La Fourmi Immo.
 
-Thomas Kienlen
-
-##USAGE
-
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Added some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request

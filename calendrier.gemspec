@@ -2,7 +2,7 @@
 require File.expand_path('../lib/calendrier/version', __FILE__)
 
 Gem::Specification.new do |gem|
-  gem.authors       = ["Romain Castel", "Thomas Kienlen"]
+  gem.authors       = ["Thomas Kienlen", "Romain Castel"]
   gem.email         = ["thomas.kienlen@lafourmi-immo.com"]
   gem.description   = %q{simple calendar}
   gem.summary       = %q{simple calendar gem, including helpers to display objects inside cells}
