@@ -20,10 +20,10 @@ module Calendrier
     protected
 
     def sorted_events_do(events_by_date, cell_begin_time, cell_end_time, &block)
-      begin 
+      begin
         unless events_by_date[cell_begin_time.year.to_s][cell_begin_time.month.to_s][cell_begin_time.day.to_s].nil?
-          events_by_date[cell_begin_time.year.to_s][cell_begin_time.month.to_s][cell_begin_time.day.to_s].each do |event|
-            yield event if display_event?(event, cell_begin_time, cell_end_time) # && block_given?
+          events_by_date[cell_begin_time.year.to_s][cell_begin_time.month.to_s][cell_begin_time.day.to_s].each_with_index do |event, idx|
+            yield event, idx if display_event?(event, cell_begin_time, cell_end_time) && block_given?
           end
         end
       rescue NoMethodError
@@ -42,11 +42,11 @@ module Calendrier
       if event.respond_to?(:begin_time) && event.respond_to?(:end_time)
         event_begin_time = event.begin_time
         event_end_time = event.end_time
-      end     
+      end
 
       if event_begin_time.to_i <= cell_begin_time.to_i
         if event_end_time.to_i <= cell_end_time.to_i
-          if event_end_time.to_i > cell_begin_time.to_i         
+          if event_end_time.to_i > cell_begin_time.to_i
             ok = true
           end
         else
