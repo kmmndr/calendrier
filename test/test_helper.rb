@@ -18,7 +18,7 @@ require 'calendrier'
 
 Calendrier::Routes = ActionDispatch::Routing::RouteSet.new
 Calendrier::Routes.draw do
-  match ':controller(/:action(/:id))'
+  match ':controller(/:action(/:id))', :via => :get
 end
 
 ActionController::Base.send :include, Calendrier::Routes.url_helpers
