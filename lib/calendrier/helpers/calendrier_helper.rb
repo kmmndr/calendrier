@@ -52,7 +52,7 @@ module Calendrier
         day_counter = 0
         weeks_in_month.times do |week_index|
           (0...DAYS_IN_WEEK).each do |day_index|
-            day_counter += 1 if (day_index == first_day_of_month || day_counter != 0) 
+            day_counter += 1 if (day_index == first_day_of_month || day_counter != 0)
             days_arr << nil if (day_counter == 0 && day_index != first_day_of_month) || (day_counter != 0 && day_counter > days_in_month) 
             days_arr << day_counter if (day_counter == 0 && day_index == first_day_of_month) || (day_counter != 0 && day_counter <= days_in_month) 
           end

@@ -1,5 +1,3 @@
-require 'pp'
-
 module Calendrier
   module CalendrierBuilder
 
@@ -49,7 +47,7 @@ module Calendrier
               tbody = @context.content_tag(:tbody, nil) do
                 trs = "".html_safe
                 content.each_with_index do |row, index|
-                  trs << @context.content_tag(:tr, nil) do 
+                  trs << @context.content_tag(:tr, nil) do
                     tds = "".html_safe
                     tds << @context.content_tag(:td, "#{index}h") if display == :week
                     row.collect do |cell|
