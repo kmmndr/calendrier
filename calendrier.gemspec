@@ -7,6 +7,7 @@ Gem::Specification.new do |gem|
   gem.summary       = %q{simple calendar gem, including helpers to display objects inside cells}
   gem.description   = gem.summary
   gem.homepage      = "https://github.com/lafourmi/calendrier"
+  gem.license       = 'AGPL-3'
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
