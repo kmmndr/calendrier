@@ -4,9 +4,10 @@ require File.expand_path('../lib/calendrier/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Thomas Kienlen", "Romain Castel"]
   gem.email         = ["thomas.kienlen@lafourmi-immo.com"]
-  gem.description   = %q{simple calendar}
   gem.summary       = %q{simple calendar gem, including helpers to display objects inside cells}
+  gem.description   = gem.summary
   gem.homepage      = "https://github.com/lafourmi/calendrier"
+  gem.license       = 'AGPL-3'
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }

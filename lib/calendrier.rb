@@ -1,5 +1,6 @@
 require "calendrier/version"
 require "calendrier/calendrier_builder"
+require "calendrier/item"
 require "calendrier/controllers/event_extension"
 require "calendrier/helpers/calendrier_helper"
 require "calendrier/helpers/event_helper"
