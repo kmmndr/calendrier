@@ -28,7 +28,27 @@ To use that method, you could pass as argument a mix of any objects which `respo
   * `year`, `month`, `day`
   * `begin_time`, `end_time`
 
-This method will return an array like this :
+
+You may want to add a single object several times, or add object which does not respond directly to such methods.
+In that case, the Gem is providing a small class to cast your objects.
+
+For example :
+
+    YourObject.year --> NoMethodError
+    Calendrier::Item(your_object, :field => :signature).year --> 2013
+
+The later call is equivalent to your_object.signature.year
+
+In a real world, one could have the following simple example :
+
+        arr = Meeting.all
+        acts = Act.all
+        arr << acts.map { |act| Calendrier::Item.new(act, field: :appointment) }
+        arr << acts.map { |act| Calendrier::Item.new(act, field: :signature) }
+        @events_by_date = sort_events(arr)
+
+
+Then `sort_events` method will return an array like this :
 
     events_by_date => {"2012"=>{"5"=>{"21"=>[#<Event>, #<Event>],
                                       "22"=>[#<Event>, #<Event>, #<Event>],
@@ -128,6 +148,7 @@ Use your new builder by adding the builder option to the renderer.
     <%= calendrier(:year => 2012, :month => 5, :day => 25, :start_on_monday => true, :display => :month, :builder => Calendrier::CalendrierBuilder::CustomBuilder) %>
 
 
+
 ## Installation
 
 Add this line to your application's Gemfile :
@@ -141,6 +162,7 @@ And then execute :
 Or install it yourself as :
 
     $ gem install calendrier
+
 
 
 ## License
