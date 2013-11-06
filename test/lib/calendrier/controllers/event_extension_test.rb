@@ -8,7 +8,7 @@ describe Calendrier::EventExtension do
 
     de = FakeDailyEvent.new(2012,5,21)
     de2 = FakeDailyEvent.new(2012,5,24)
-    le = FakeLongEvent.new(Time.utc(2012,5,23).to_i, Time.utc(2012,5,25,12).to_i)
+    le = FakeLongEvent.new(DateTime.new(2012,5,23), DateTime.new(2012,5,25,12))
 
     @events_sorted_manually = {"2012"=>{
                                     "5"=>{
@@ -37,4 +37,3 @@ describe Calendrier::EventExtension do
   end
 
 end
-

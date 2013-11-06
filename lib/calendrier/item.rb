@@ -11,14 +11,14 @@ module Calendrier
       ret = nil
 
       unless obj.nil?
-        if options.include?(:field)
-          ret = obj.send(options[:field]).send(method)
-        elsif !options[method].nil?
+        if !options[method].nil?
           if options[method].is_a?(Symbol)
             ret = obj.send(options[method])
           else
             ret = options[method]
           end
+        elsif options.include?(:field)
+          ret = obj.send(options[:field]).send(method)
         elsif obj.respond_to?(method)
           ret = obj.send(method)
         end

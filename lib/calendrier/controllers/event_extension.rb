@@ -5,7 +5,6 @@ module Calendrier
       events_by_date = {}
 
       events.sort_by { |obj| get_event_stamp(obj) }.each do |event|
-
         begin_date = Time.at(get_event_stamp(event)).to_date
         end_date = Time.at(get_event_stamp(event, :end_time => true)).to_date
 
@@ -45,7 +44,7 @@ module Calendrier
       ret = nil
 
       if event.respond_to?(:year) && event.respond_to?(:month) && event.respond_to?(:day)
-        ret = Time.utc(event.year, event.month, event.day).to_i
+        ret = Time.utc(event.year, event.month, event.day)
       elsif event.respond_to?(:begin_time) && event.respond_to?(:end_time)
         ret = end_time ? event.end_time : event.begin_time
       end

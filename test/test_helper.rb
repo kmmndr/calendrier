@@ -49,4 +49,3 @@ class FakeLongEvent < FakeEvent
     @begin_time, @end_time = begin_time, end_time
   end
 end
-
