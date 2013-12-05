@@ -39,7 +39,7 @@ module Calendrier
           table_content_row = []
           DAYS_IN_WEEK.times do |index|
             this_day = (first_day_of_week + index)
-            cell_begin_time = Time.utc(this_day.year, this_day.month, this_day.day, hour_index)
+            cell_begin_time = Time.local(this_day.year, this_day.month, this_day.day, hour_index)
             cell_content = nil
             cell_end_time = cell_begin_time + 3600
             cell_content = capture(cell_begin_time, cell_end_time, &block) if block_given?
@@ -53,8 +53,8 @@ module Calendrier
         weeks_in_month.times do |week_index|
           (0...DAYS_IN_WEEK).each do |day_index|
             day_counter += 1 if (day_index == first_day_of_month || day_counter != 0)
-            days_arr << nil if (day_counter == 0 && day_index != first_day_of_month) || (day_counter != 0 && day_counter > days_in_month) 
-            days_arr << day_counter if (day_counter == 0 && day_index == first_day_of_month) || (day_counter != 0 && day_counter <= days_in_month) 
+            days_arr << nil if (day_counter == 0 && day_index != first_day_of_month) || (day_counter != 0 && day_counter > days_in_month)
+            days_arr << day_counter if (day_counter == 0 && day_index == first_day_of_month) || (day_counter != 0 && day_counter <= days_in_month)
           end
         end
 

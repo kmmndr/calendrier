@@ -35,13 +35,17 @@ module Calendrier
       event_end_time = nil
 
       if event.respond_to?(:year) && event.respond_to?(:month) && event.respond_to?(:day)
-        event_begin_time = Time.utc(event.year, event.month, event.day)
-        event_end_time = Time.utc(event.year, event.month, event.day, 23, 59, 59)
+        event_begin_time = Time.local(event.year, event.month, event.day, event.hour, event.min, event.sec)
+        if event.hour.zero? && event.min.zero? && event.sec.zero?
+          event_end_time = Time.local(event.year, event.month, event.day, 23, 59, 59)
+        else
+          event_end_time = event_begin_time
+        end
       end
 
       if event.respond_to?(:begin_time) && event.respond_to?(:end_time)
-        event_begin_time = event.begin_time
-        event_end_time = event.end_time
+        event_begin_time = event.begin_time.localtime
+        event_end_time = event.end_time.localtime
       end
 
       if event_begin_time.to_i <= cell_begin_time.to_i

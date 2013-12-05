@@ -44,9 +44,9 @@ module Calendrier
       ret = nil
 
       if event.respond_to?(:year) && event.respond_to?(:month) && event.respond_to?(:day)
-        ret = Time.utc(event.year, event.month, event.day)
+        ret = Time.local(event.year, event.month, event.day)
       elsif event.respond_to?(:begin_time) && event.respond_to?(:end_time)
-        ret = end_time ? event.end_time : event.begin_time
+        ret = end_time ? event.end_time.localtime : event.begin_time.localtime
       end
 
       return ret
