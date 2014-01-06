@@ -36,11 +36,7 @@ module Calendrier
 
       if event.respond_to?(:year) && event.respond_to?(:month) && event.respond_to?(:day)
         event_begin_time = Time.local(event.year, event.month, event.day, event.hour, event.min, event.sec)
-        if event.hour.zero? && event.min.zero? && event.sec.zero?
-          event_end_time = Time.local(event.year, event.month, event.day, 23, 59, 59)
-        else
-          event_end_time = event_begin_time
-        end
+        event_end_time = Time.local(event.year, event.month, event.day, event.hour, 59, 59)
       end
 
       if event.respond_to?(:begin_time) && event.respond_to?(:end_time)
